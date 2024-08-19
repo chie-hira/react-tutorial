@@ -17,8 +17,12 @@ function App() {
   const inputRef = useRef();
 
   const handleAddTodo = () => {
-    // inputも文字列を取得
+    // input文字列を取得
     const inputName = inputRef.current.value;
+    
+    if (inputName === '') {
+      return;
+    }
     
     const newTodo = { id: uuidv4(), name: inputName, completed: false };
     setTodos([...todos, newTodo]);
