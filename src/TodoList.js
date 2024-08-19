@@ -3,11 +3,11 @@ import React from 'react'
 import Todo from './Todo'
 
 // 関数コンポーネント作成
-const TodoList = ({todos}) => {
+const TodoList = ({todos, toggleTodo}) => {
   
   // 配列の中身を表示
   // ユニークなkeyを指定しないとエラーが出る
-  return todos.map((todo) => <Todo todo={todo} key={todo.id} />);
+  return todos.map((todo) => <Todo todo={todo} key={todo.id} toggleTodo={toggleTodo} />);
   
   // そのまま表示
   // return (

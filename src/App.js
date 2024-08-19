@@ -23,10 +23,19 @@ function App() {
 
     inputRef.current.value = '';
   }
+
+  const toggleTodo = (id) => {
+    // コピーして新しい配列を作成
+    // 状態管理されているものを直接編集することは良くない
+    const newTodos = [...todos];
+    const todo = newTodos.find((todo) => todo.id === id);
+    todo.completed = !todo.completed; // trueとfalseを切り替える
+    setTodos(newTodos);
+  }
   
   return (
     <> 
-      <TodoList todos={todos}/>
+      <TodoList todos={todos} toggleTodo={toggleTodo}/>
       <input type="text" ref={inputRef} />
       <button onClick={handleAddTodo}>タスクの追加</button>
       <button>完了したタスクの削除</button>
